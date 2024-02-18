@@ -1,0 +1,71 @@
+
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+    <!-- <div class="col-8"> -->
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+    <h1>All Users:<br></h1>
+
+ Users:  <%= @users.count %>
+    	 <table class="table table-striped">
+
+   <thead class="thead-dark"> 
+    <tr>
+      <th>Fullname</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>DOB</th>
+      <th>Last Seen</th>
+    </tr>
+  </thead>
+    
+<% @users.each do |user| %>
+
+<!-- <p><li><%= user.email.split('@')[0].capitalize %> -->
+
+
+  <tr>
+  	<td><%= user.first_name %> <%= user.last_name %></td>
+	<td><%= user.name %></td>
+	<td><%= user.email %></td>
+	<td><%= user.birthday %></td>
+  <td><%= user.last_seen_at.nil? ? "Never signed in" : time_ago_in_words(user.last_seen_at) %></td>
+</tr>
+<%end%>
+</table>
+</div>
+
+
+
+<div class="col-md-3">
+<table class="table">
+  <thead class="thead-dark"> 
+    <tr>
+      <th><h5>Online Users <span class="badge badge-success"><%= @online_users.size %> </span></h5></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @online_users.each do |user| %>
+  <tr>
+    <td><%= user.email %>
+    <span class="badge badge-success">Online</span></td>
+  </tr>
+  <%end%>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+

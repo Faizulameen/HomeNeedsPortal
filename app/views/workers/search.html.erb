@@ -1,0 +1,61 @@
+
+
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'>
+<div class="path"></div>
+<h1>Search</h1><br>
+<div class="container">
+  <div class="row">
+
+<ol>
+     <table class="table"> 
+   <thead class="thead-dark"> 
+    <tr>
+     <th>Image</th>
+     <th>Name</th>
+     <th>Email</th>
+      <th>Address</th>
+     <th>Role</th>
+     <th>Experience</th>
+      <th>Phone</th>
+       <th>FixedAmount</th>
+     <th>Lat</th>
+      <th>Long</th>
+         </tr>
+<% @workers.each do |worker| %>
+      <tr>
+        <td><%= image_tag(worker.image, style:'width:150px; height:auto') %>
+            
+          <br>  <%= link_to 'Show', worker,class: 'btn btn-success' %>
+           <br><%= link_to 'Book Now', new_worker_block_path(worker),class: 'btn btn-primary' %>
+
+        </td>
+        <td><%= worker.name %></td>
+        <td><%= worker.email %></td>
+        <td><%= worker.address %></td>
+        <td><%= worker.role %></td>
+        <td><%= worker.experience %></td>
+        <td><%= worker.phone %></td>
+         <td><%= worker.fixedamount %></td>
+         <td><%= worker.latitude %></td>
+         <td><%= worker.longitude %></td>
+
+        <% if current_user && current_user.admin %>
+         <td><%= link_to 'Edit', edit_worker_path(worker), class: 'btn btn-warning btn-sm' %></td>
+        <td><%= link_to 'Destroy', worker,class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+<% end %>
+       
+      
+    <% end %></ol>
+
+    </div>
+</div>
+</tr>
+</thead>
+</table>
+</ol>
+</h2>
+</div>
+</div>

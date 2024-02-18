@@ -1,0 +1,15 @@
+<div class="revieww-rating" data-score="<%= revieww.rating %>"></div>
+
+<p><%= revieww.comment %></p>
+
+
+<% if user_signed_in? %>
+
+	<% if revieww.user_id == current_user.id %>
+
+	<%= link_to "Edit", edit_product_revieww_path(revieww.product, revieww) %>
+
+	<%= link_to "Delete", product_revieww_path(revieww.product, revieww),class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>
+	<% end %>
+<% end %>
+

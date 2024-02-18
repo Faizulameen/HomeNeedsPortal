@@ -1,0 +1,79 @@
+
+
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+
+<form class="form-inline my-2 my-lg-0" action="/search">
+<input class="form-control mr-sm-2" name="q" type="text" placeholder="Search Worker" aria-label="Search">
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i> Search</button>
+</form>
+</div>
+<div class="col-md-2">
+<div class="abc">
+<form action="/viewer">
+<button class="btn btn-outline-info btn-sm" type="submit">View Booking</button>
+</form>
+</div>
+
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+
+<h1>Workers</h1>
+
+<table class="table table-striped"> 
+   <thead class="thead-dark"> 
+
+    <tr>
+      <th>Profile</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Role</th>
+      <th>Experience</th>
+      <th>Phone</th>
+      <th>Labour Charge</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  
+
+  <tbody>
+    <% @workers.each do |worker| %>
+      <tr>
+        <td><%= image_tag(worker.image, style:'width:100px; height:auto') %></td>
+        <td><%= worker.name %></td>
+        <td><%= worker.email %></td>
+        <td><%= worker.address %></td>
+        <td><%= worker.role %></td>
+        <td><%= worker.experience %></td>
+        <td><%= worker.phone %></td>
+        <td><%= worker.fixedamount %></td>
+        <td><%= button_to 'Show', worker, method: :get, class: 'btn btn-outline-success btn-sm' %>
+       <%= button_to 'Book&Payment', new_worker_block_path(worker), method: :get, class: 'btn btn-outline-info btn-sm' %></td>
+
+      </tr>
+    <% end %>
+
+
+<br>
+</tbody>
+</table>
+
+<%= will_paginate(@workers, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

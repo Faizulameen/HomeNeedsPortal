@@ -1,0 +1,64 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Workers</h1>
+
+<table class="table table-striped"> 
+   <thead class="thead-dark"> 
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Role</th>
+      <th>Experience</th>
+      <th>Phone</th>
+       <th>FixedAmount</th>
+       <th>Lat</th>
+       <th>Log</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workers.each do |worker| %>
+      <tr>
+        <td><%= image_tag(worker.image, style:'width:150px; height:auto') %>
+          <%= link_to 'Show', worker,class: 'btn btn-outline-info btn-sm' %><%= link_to 'Edit', edit_worker_path(worker), class: 'btn btn-secondary btn-sm' %><%= link_to 'Destroy', worker,class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
+          
+        </td>
+        <td><%= worker.name %>
+          
+        </td>
+        <td><%= worker.email %></td>
+        <td><%= worker.address %></td>
+        <td><%= worker.role %></td>
+        <td><%= worker.experience %></td>
+        <td><%= worker.phone %></td>
+        <td><%= worker.fixedamount %></td>
+        <td><%= worker.latitude %></td>
+        <td><%= worker.longitude %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Worker', new_worker_path %>
+
+<form class="form-inline my-2 my-lg-0" action="/search">
+<input class="form-control mr-sm-2" name="q" type="text" placeholder="Search Project" aria-label="Search">
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+
+  
+<%= will_paginate(@products, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+</div>
+</div>
+</div>
+</div>

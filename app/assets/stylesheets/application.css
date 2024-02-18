@@ -1,0 +1,302 @@
+@import "base";
+
+
+*{
+  font-family: 'Comfortaa', cursive;
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.container{
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+}
+
+body{
+  margin: 0;
+  padding: 0;
+ /* background: linear-gradient(120deg,#2980b9, #8e44ad);*/
+    background-image: url(https://media.gettyimages.com/photos/success-picture-id912928582);
+  height: 100vh;
+      background-size: cover;
+    background-position: center;
+
+
+}
+
+
+input[type="submit"]{
+  width: 100%;
+  height: 35px;
+  border: 1px solid;
+  
+  
+  border-radius: 25px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  
+  
+}
+
+
+#a
+{
+ width: 3%;
+}
+
+
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 0px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+
+/*.zoom:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.5); 
+}
+*/
+
+
+.fa{
+    display:inline-block;
+    color:red;
+    border-right:1px solid #fff;
+    padding:8px;
+    margin-left: 8px;
+}
+
+
+.table td, .table th {
+    padding: .75rem;
+   vertical-align: text-top;
+    border-top: 1px solid #dee2e6;
+}
+
+
+
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+  
+
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  tr { border: 1px solid #ccc; }
+  
+  td { 
+
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 50%; 
+  }
+  
+  td:before { 
+
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+  }
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #6c757d;
+}
+
+
+
+
+
+.project-card {
+  transition: background-color 0.5s ease;
+  &:hover{
+    background-color: #f7f7f7
+}
+}
+
+.label{
+  width:40%;
+  display:flex;
+  justify-content:center;
+}
+
+.add{
+  width:35%;
+   float: right;
+  height: 20%;
+
+}
+.quantity{
+  width: 20%;
+  float: left;
+  padding: 2px;
+}
+
+
+
+.like{
+  width: 20%;
+  float: left;
+}
+
+  .product{
+
+  display: flex;
+
+  width: 100%;
+
+  height: 450px;
+
+  overflow: hidden;
+
+  border: 0.5px solid silver;
+
+  margin-bottom: 20px;
+
+
+
+}
+
+
+.actions{
+  width: 20%;
+}
+
+
+.bt{
+  width: 20%;
+  font-size: 20%;
+}
+
+.aaaa{
+  float: right;
+}
+
+.abc{
+      float: right;
+}
+
+
+
+
+.center{
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+.product_hover{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 30px;
+  text-align: center;
+}
+
+.product_hover li{
+  list-style: none;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+  top: 100px;
+  opacity: 0;
+}
+
+.product_hover li:last-child{
+  margin-right: 0;
+}
+
+.product_hover li:hover a{
+  background-color: #ff7200;
+}
+
+.product_hover li:hover a i{
+  color: #fff;
+  transform: rotate(360deg);
+}
+
+.product_hover li a{
+  font-size: 18px;
+  color: #000;
+  display: block;
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
+  line-height: 45px;
+  border-radius: 50px;
+  box-shadow: 0 0 25px rgba(24,24,24,0.4);
+  transition: all 0.5s;
+}
+
+.product_hover li a i{
+  position: relative;
+  display: inline-block;
+  transform: rotate(0);
+  transition: all 0.3s;
+}
+
+.product_item:hover .product_hover li{
+  opacity: 1;
+  top: 0;
+}
+
+.product_hover li:nth-child(1){
+  transition: all 0.4s ease 0.1s;
+}
+
+.product_hover li:nth-child(2){
+  transition: all 0.4s ease 0.15s;
+}
+
+.product_hover li:nth-child(3){
+  transition: all 0.4s ease 0.2s;
+}
+
+.product_hover li:nth-child(4){
+  transition: all 0.4s ease 0.25s;
+}
+
+
+
+
+

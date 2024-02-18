@@ -1,0 +1,96 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-1'></h2>
+   
+                <h1 class="text-white text-center">Booking Now</h1>
+
+<%= simple_form_for([@worker, @worker.blocks.build]) do |f| %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+  <h2>User Details</h2>
+
+    <%= f.label :Start %>
+    <%= f.date_field :from , autofocus: true %> 
+     <%= f.label :End %>
+    <%= f.date_field :to , autofocus: true %>
+
+
+
+
+ <i class="fa fa-address-card-o"></i> <%= f.input :address ,placeholder:'Enter your current address'%>
+ <i class="fa fa-institution"></i><%= f.input :city, placeholder:'Enter city' %>
+  <%= f.input :state, placeholder:'Enter state'  %>
+  <%= f.input :pin, placeholder:'Enter pincode' %>
+</div>
+<div class="col-md-6">
+
+    <table class="table">
+
+ <h3>Payment</h3>
+ <br>
+ <h4>Accepted Cards</h4>
+ <tr>
+              <th>Cardname</th>
+              <th> <i class="fa fa-cc-visa" style="color:navy;"></i>
+  <input type="radio" id="html" name="fav_language" value="Visa">
+  <label for="visa">Visa</label></th>
+ <th> <i class="fa fa-cc-mastercard" style="color:red;"></i>
+  <input type="radio" id="css" name="fav_language" value="MasterCard">
+  <label for="mastercard">MasterCard</label></th>
+  <th><i class="fa fa-cc-amex" style="color:blue;"></i>
+  <input type="radio" id="javascript" name="fav_language" value="Amex">
+  <label for="amex">Amex</label></th>
+  <th><i class="fa fa-cc-discover" style="color:orange;"></i>
+  <input type="radio" id="discover" name="fav_language" value="Discover">
+  <label for="discover">Discover</label>
+</th>
+</table>
+  <%= f.input :cardno, placeholder:'Enter card number' %>
+    <tr>
+    <td><strong>Expmonth:</strong></td>
+    <td><select   id="slct1" name="slct1" onchange= " populate(this.id,'slct2')" >
+  <option>Select..</option>
+    <option value="Jan">Jan</option>
+    <option value="Feb">Feb</option>
+    <option value="Law">March</option>
+    <option value="Law">April</option>
+    <option value="Law">May</option>
+    <option value="Law">June</option>
+    <option value="Law">July</option>
+    <option value="Law">Aug</option>
+    <option value="Law">Sep</option>
+    <option value="Law">Oct</option>
+    <option value="Law">Nov</option>
+    <option value="Law">Dec</option>
+      
+</select></td>
+    <td>&nbsp;</td>
+  </tr>
+    <%= f.input :expyear, placeholder:'Enter card expyear' %>
+     <%= f.input :cvv, placeholder:'Enter 3 digit cvv' %>
+     <br>
+
+        
+  <strong>1 day Labour Charge:</strong>
+  <%= @worker.fixedamount %>
+  <br>
+  <br>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<br>
+<center>
+<div class="bt">
+ <%= f.button :submit ,"Create Booking" ,class: 'btn btn-outline-info'%></div>
+  </center>
+  <% end %>
+
+
+</div>
+</div>
+

@@ -1,0 +1,132 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-2'></h2>
+
+
+<% if current_user && current_user.admin %>
+<div class="container">
+  <div class="row">
+<h1>View Orders</h1>
+    <table class="table"> 
+
+ <thead class="thead-dark"> 
+   <tr>
+
+     <th>Fullname</th>
+     <th>Email</th>
+     <th>DOB</th>
+     <th>Address</th>
+      <th>City</th>
+     <th>State</th>
+     <th>Pin</th>
+      <th>Status</th>
+   </tr>
+ </thead>
+
+ <tr>
+  <td> <%= payment.user.first_name %> <%= payment.user.last_name %></td>
+<td><%= payment.user.email %></td>
+<td><%= payment.user.birthday %></td>
+<td><%= payment.address %></td>
+<td><%= payment.city %></td>
+<td><%= payment.state %></td>
+<td><%= payment.pin %></td>
+
+<td><span class="badge badge-<%= payment.badge_color %> mb-3"><p><%= payment.status %></span>
+  <%= link_to "Edit", edit_product_payment_path(payment.product, payment), class: 'btn btn-warning btn-sm' %>
+<%= link_to "Delete", product_payment_path(payment.product, payment),class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: "Are you sure?" } %></td>
+
+</p>
+</span>
+</td>
+</tr>
+</table>
+<h2>Products Details</h2>
+<table class="table"> 
+
+ <thead class="thead-dark"> 
+   <tr>
+          <th>Product</th>
+      <th>Price</th>
+      <th>Product Id</th>
+      <th>User Id</th>
+</tr>
+</thead>
+<tr>
+  <td><%= payment.product.title %></td>
+<td><%= payment.product.price %></td>
+<td><%= payment.product_id %></td>
+<td><%= payment.user_id %></td>
+</tr>
+</table>
+
+
+	<% end %>
+
+	<br>
+
+
+
+    <% if user_signed_in? %>
+
+
+    
+<% if payment.user_id == current_user.id %>
+<h1>View Orders</h1>
+
+    <table class="table"> 
+
+ <thead class="thead-dark"> 
+   <tr>
+     <th>Fullname</th>
+     <th>Email</th>
+     <th>DOB</th>
+     <th>Address</th>
+      <th>City</th>
+     <th>State</th>
+     <th>Pin</th>
+      <th>Status</th>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Product Id</th>
+   </tr>
+ </thead>
+<b>UserDetails</b>
+ <tr>
+<td> <%= payment.user.first_name %> <%= payment.user.last_name %></td>
+<td><%= payment.user.email %></td>
+<td><%= payment.user.birthday %></td>
+<td><%= payment.address %></td>
+<td><%= payment.city %></td>
+<td><%= payment.state %></td>
+<td><%= payment.pin %></td>
+
+<td><span class="badge badge-<%= payment.badge_color %> mb-3"><p><%= payment.status %></span>
+<td><%= payment.product.title %></td>
+<td><%= payment.product.price %></td>
+
+</td>
+
+<td><%= payment.product_id %></td>
+
+<!-- <td><%= payment.product.order_items.to_a %></td> -->
+
+
+<%= link_to "Cancel Order", product_payment_path(payment.product, payment),class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>
+</p>
+</span>
+</td>
+</tr>
+</table>
+
+	<% end %>
+
+<%end%>
+
+
+         
+
+</div>
+</div>
+</div>
+</div>

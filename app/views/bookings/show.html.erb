@@ -1,0 +1,52 @@
+
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>image:</strong>
+  <%= @worker.image %>
+</p>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @worker.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @worker.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @worker.address %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @worker.role %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @worker.experience %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @worker.phone %>
+</p>
+<p>
+  <strong>FixedAmount:</strong>
+  <%= @worker.fixedamount %>
+</p>
+
+<%= link_to 'Edit', edit_worker_path(@worker), class: 'btn btn-warning btn-sm' %> |
+<%= link_to 'Back', workers_path %>
+<%= link_to 'Buy Now', new_worker_block_path(@worker) %><br>
+
+</div>
+</div>

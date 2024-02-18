@@ -1,0 +1,51 @@
+
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+<% @order_items.each do |item| %>
+ <table class="table"> 
+   <thead class="thead-dark"> 
+    <tr><th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+          <th colspan="5"></th>
+    </tr>
+    <tr>
+
+       <td> <%= image_tag(item.product.image, style:'width:150px; height:auto')%> </td> 
+    <td><%= item.product.title %></td>
+    <td><%= item.product.price %></td>
+
+    <td><%= form_for item, remote: true do |f| %>
+
+       <%= f.hidden_field :product_id, :value => item.product.id %>
+        <%= f.number_field :quantity, :value => item.quantity.to_i %>
+        <%= f.submit "Update Card "%></td>
+
+        <td><%= link_to "Remove Items", order_item_path(item),class: "btn btn-outline-danger btn-sm", method: :delete, remote: true%></td>
+
+    <% end %></td>
+     <td><%= button_to 'Buy now', new_product_payment_path(item.product), class: 'btn btn-dark', method: :get %></td>
+
+</tr>
+</thead>
+</table>
+</form>
+
+    <h2>Subtotal: <%= item.total %></h2>
+
+<% end %>
+
+
+
+
+<h3>Your current card value has a subtotal of: <%= current_order.subtotal %></h3>
+
+
+<form action="/products/57/payments/new?" method="get">
+   <%= button_to 'Buy All' %>
+</form>
+
+</div>
+</div>

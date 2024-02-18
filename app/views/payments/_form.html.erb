@@ -1,0 +1,86 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+<!-- 
+    <br>
+<h1><center>Product Details</center></h1>
+<h3><b>Product:</b><%= @product.title %></h3>
+     <p>
+  <h3><strong>Price:</strong>
+  <%= @product.price %>
+</p></h3>
+ -->
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6">
+          <center><h1>Billing Address</h1></center>
+<%= simple_form_for([@product, @product.payments.build]) do |f| %>
+
+
+ <i class="fa fa-address-card-o"></i> <%= f.input :address, placeholder:'Enter your current address' %>
+ <i class="fa fa-institution"></i><%= f.input :city , placeholder:'Enter city'%>
+  <%= f.input :state, placeholder:'Enter state' %>
+  <%= f.input :pin , placeholder:'Enter pincode'%>
+  </div>
+
+   <div class="col-md-6">
+
+             <table class="table">
+            <center><h2>Payment</h2></center><br>
+ <h3>Accepted Cards</h3>
+ <tr>
+              <th>Cardname</th>
+              <th> <i class="fa fa-cc-visa" style="color:navy;"></i>
+  <input type="radio" id="html" name="fav_language" value="Visa">
+  <label for="visa">Visa</label></th>
+ <th> <i class="fa fa-cc-mastercard" style="color:red;"></i>
+  <input type="radio" id="css" name="fav_language" value="MasterCard">
+  <label for="mastercard">MasterCard</label></th>
+  <th><i class="fa fa-cc-amex" style="color:blue;"></i>
+  <input type="radio" id="javascript" name="fav_language" value="Amex">
+  <label for="amex">Amex</label></th>
+  <th><i class="fa fa-cc-discover" style="color:orange;"></i>
+  <input type="radio" id="discover" name="fav_language" value="Discover">
+  <label for="discover">Discover</label>
+</th>
+</table>
+  <%= f.input :cardno, placeholder:'Enter card number' %>
+    <tr>
+    <td><strong>Expmonth:</strong></td>
+    <td><select   id="slct1" name="slct1" onchange= " populate(this.id,'slct2')" >
+  <option>Select..</option>
+    <option value="Jan">Jan</option>
+    <option value="Feb">Feb</option>
+    <option value="Law">March</option>
+    <option value="Law">April</option>
+    <option value="Law">May</option>
+    <option value="Law">June</option>
+    <option value="Law">July</option>
+    <option value="Law">Aug</option>
+    <option value="Law">Sep</option>
+    <option value="Law">Oct</option>
+    <option value="Law">Nov</option>
+    <option value="Law">Dec</option>
+      
+</select></td>
+    <td>&nbsp;</td>
+
+    
+  </tr>
+    <%= f.input :expyear, placeholder:'Enter expyear' %>
+     <%= f.input :cvv, placeholder:'Enter cvv' %>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<br>
+<center>
+<div class="bt">
+ <%= f.button :submit ,"Create Payment" ,class: 'btn btn-outline-info'%></div></center>
+  <% end %>
+</div>
+</div>
+</div>
+</div>

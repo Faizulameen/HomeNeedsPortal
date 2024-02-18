@@ -1,0 +1,138 @@
+
+
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+     <div class="fa">
+<form class="form-inline my-2 my-lg-0" action="/searc">
+<input class="form-control mr-sm-2" name="q" type="text" placeholder="Search Products" aria-label="Search">
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i> Search</button>
+</form></div>
+
+
+    <div class="aaaa">
+  
+<form action="/view">
+<button class="btn btn-outline-info btn-sm" type="submit">View Orders</button>
+</form>
+</div>
+<br>
+<br>
+<br>
+
+
+<div id="card">
+  <%= render 'cards/card'%> 
+</div>
+
+
+
+
+ <!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Shopping</title>
+
+
+
+</head>
+
+<body>
+ 
+
+
+  <div class="container">
+
+  <h1>Shopping</h1>
+<div class="row">
+
+ <% @products.each do |product| %> 
+
+          
+
+ <div class="col-md-4">
+  <div class="product">
+     <div class="product_item">
+            <div class="product_item_pic">
+              
+              <ul class="product_hover">
+                <li><a href="products#show"><i class="fa fa-arrows-alt"></i></a></li>
+                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i></a></li>
+              </ul>
+            </div>
+          </div>
+
+         <%= link_to shop_path(product), class: 'text-decoration-none' do %>
+    
+        <center><%= image_tag(product.image, style:'width:150px; height:200px')%><br>  <%end%>
+       <strong><%= product.title %></strong> 
+        <p class='text-secondary'>Rs: <%= product.price %></p>
+      
+        
+
+         <%= form_for @order_item, remote: true  do |f|%>
+              <%= f.hidden_field :product_id, :value => product.id %>
+         <div class="quantity"><%= f.number_field :quantity, :value => 1, :min =>  1%></div>
+
+          <div class="add">
+          <%= f.submit "Add to Card" , class: 'btn btn-outline-success btn-sm'%>
+          </div>
+     
+          <% end %>
+          <br><br>
+          <%= button_to 'Buy now', new_product_payment_path(product), class: 'btn btn-outline-info btn-sm', method: :get %>
+
+
+             <div class="like">
+         <%= product.likes.count %> Likes
+            <% like = current_user.likes.find_by(product: product) %>
+             <% if like.nil? %>
+
+                   <%= button_to "Like", likes_path, params: { like: { product_id: product.id }}, method: :post ,class:"fa fa-thumbs-up"%>
+              <% else %>
+                    <%= button_to "Unlike", like_path(like), method: :delete,class:"fa fa-thumbs-up" %>
+                <% end %>
+              </div>
+           
+      </div>
+    </div>
+
+<%end%>
+</div>
+</center>
+</div>
+</div>
+
+</body>
+
+
+</html>
+
+
+<br>
+
+<div class="center"><%= will_paginate(@products, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %></div>
+</div>
+</div>
+                                 
+
+
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+
+

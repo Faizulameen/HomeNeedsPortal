@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+<h1>Edit Review</h1>
+
+<%= simple_form_for([@product, @revieww]) do |f| %>
+	<div id="rating-form">
+    	<label>Rating</label>
+    </div>
+	<%= f.input :comment %>
+	<%= f.button :submit, :class => "btn-custom2" %>
+<% end %>
+
+<script>
+  	$('#rating-form').raty({
+  		path: '/assets/',
+  		scoreName: 'revieww[rating]'
+  	});
+  </script>
+</div>
+</div>

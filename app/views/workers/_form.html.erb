@@ -1,0 +1,80 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+<%= form_with(model: worker, local: true) do |form| %>
+  <% if worker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(worker.errors.count, "error") %> prohibited this worker from being saved:</h2>
+
+      <ul>
+      <% worker.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6">
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address %>
+  </div>
+</div>
+
+   <div class="col-md-6">
+
+  <div class="field">
+    <%= form.label :role %>
+    <%= form.text_field :role %>
+  </div>
+
+  
+
+  <div class="field">
+    <%= form.label :experience %>
+    <%= form.number_field :experience %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= form.label :fixedamount %>
+    <%= form.text_field :fixedamount %>
+  </div>
+  </div>
+</div>
+ 
+
+<center>
+  <div class="actions">
+    <%= form.submit "Create Worker", class:' btn btn-outline-info  btn-sm' %>
+   <%= link_to 'Back', workers_path, class: "btn btn-outline-lite  btn-sm" %>
+  </div></center>
+
+<% end %>
+
+</div>
+</div>
+</div>
+</div>

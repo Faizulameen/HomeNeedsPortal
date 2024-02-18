@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'>
+<div class="path"></div>
+<h1>Search</h1><br>
+<ol>
+<% @workers.each do |worker| %>
+      <tr>
+        <td><%= image_tag(worker.image, style:'width:400px; height:auto') %></td>
+        <td><%= worker.name %></td>
+        <td><%= worker.email %></td>
+        <td><%= worker.address %></td>
+        <td><%= worker.role %></td>
+        <td><%= worker.experience %></td>
+        <td><%= worker.phone %></td>
+        <td><%= link_to 'Show', worker %></td>
+        <td><%= link_to 'Edit', edit_worker_path(worker) %></td>
+        <td><%= link_to 'Destroy', worker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %></ol>

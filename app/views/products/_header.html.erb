@@ -1,0 +1,86 @@
+ <header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ 
+   <img id="a" src="https://st4.depositphotos.com/27289274/37963/v/1600/depositphotos_379630328-stock-illustration-abstract-blue-shopping-bag-logo.jpg">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <div class="zoom">
+        <li class="nav-item">
+      
+
+          <%= link_to 'Home', shops_path, class: "nav-link" %>
+        </li>
+      </div>
+        <div class="zoom">
+        <li class="nav-item">
+          <%= link_to 'Products', shops_path, class: "nav-link" %>
+        </li>
+      </div>
+
+
+       <div class="zoom">
+        <li class="nav-item mr-md-12">
+          <%= link_to 'Workers', bookings_path, class: "nav-link" %>
+        </li>
+      </div>
+
+      <% if current_user && current_user.admin %>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Add product
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           
+            <li><%= link_to 'New Product', new_product_path, class: "nav-link" %></li>
+            <li><%= link_to 'New Category', new_category_path, class: "nav-link" %></li>
+            
+            <li><%= link_to 'New Worker', new_worker_path, class: "nav-link"  %></li>
+          </ul>
+        </li>
+
+         <li class="nav-item">
+
+        <%= link_to 'All User', alluser_path, class: "nav-link"%>
+      </li>
+
+
+      <%end%>
+      <div class="zoom">
+        <li class="nav-item mr-md-12">
+          <%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link"%>
+        </li>
+      </div>
+
+      <li class="nav-item">
+
+        <%= link_to 'Customer Service', contact_path, class: "nav-link"%>
+      </li>
+      
+
+      <div class="zoom">
+        <li class="nav-item mr-md-12">
+          <%= link_to 'logout', destroy_user_session_path, class: "nav-link", method: :delete  %>
+        </li>
+      </div>
+      </ul>
+
+</div>
+       
+
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+

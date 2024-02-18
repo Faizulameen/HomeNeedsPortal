@@ -1,0 +1,137 @@
+
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+<p id="notice"><%= notice %></p>
+
+ <table class="table"> 
+   <thead class="thead-dark"> 
+    <tr>
+     <th>Image</th>
+     <th>Name</th>
+     <th>Email</th>
+      <th>Address</th>
+     <th>Role</th>
+     <th>Experience</th>
+      <th>Phone</th>
+       <th>FixedAmount</th>
+     <th>Latitude</th>
+      <th>Longitu</th>
+   </tr>
+  
+ <tr><td><%= image_tag(@worker.image, style:'width:150px; height:auto') %><br>
+
+
+  <% if current_user && current_user.admin %>
+<%= link_to 'Edit', edit_worker_path(@worker) %> |
+<%= link_to 'Back', workers_path %>
+
+<% end %>
+ <p><strong>Average Rating</strong></p>
+ <div class="average-review-rating" data-score=<%= @average_review %>></div>
+ <span class="number-of-reviews">Based on <%=@worker.reviews.count %> reviews</span>
+<br>
+
+ <%= link_to 'Book', new_worker_block_path(@worker), class: 'btn btn-success' %><br>
+
+<%= link_to "Add Review", new_worker_review_path(@worker), class: 'btn btn-dark' %><br>
+<%= render @worker.reviews %>
+
+
+
+
+</td>
+
+  <td><%= @worker.name %></td>
+<td>
+  <%= @worker.email %>
+</td>
+
+<td>
+  <%= @worker.address %>
+</td>
+<td>
+  <%= @worker.role %></td>
+<td>
+  <%= @worker.experience %>
+</td>
+
+<td>
+  <%= @worker.phone %>
+</td>
+<td>
+  <%= @worker.fixedamount %>
+</td>
+<td>
+  <%= @worker.latitude %>
+</td>
+<td>
+  <%= @worker.longitude %>
+</td>
+
+
+
+
+
+
+</tr>
+</thead>
+</table>
+
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+    
+  });
+</script>
+
+
+
+<div class="row">
+
+    <div id="map" style="width: 50%; height: 400px"></div>
+
+    <!-- <script src="https://maps.googleapis.com/maps/api/js"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+        var location = {lat: <%= @worker.latitude %>, lng: <%= @worker.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: location,
+          zoom: 14
+        });
+
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map 
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+          content: '<div id="content"><%= image_tag(@worker.image, style:'width:200px; height:auto') %> </div>'
+
+        });
+        infoWindow.open(map, marker);
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+  </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+<%= simple_form_for([@worker, @worker.reviews.build]) do |f| %>
+    <div id="rating-form">
+    	<label>Rating</label>
+    </div>
+ 
+  <%= f.input :comment %>
+  <%= f.button :submit %>
+  <% end %>
+
+  <script>
+  	$('#rating-form').raty({
+  		path: '/assets/',
+  		scoreName: 'review[rating]'
+  	});
+  </script>
+ </div>
+</div>

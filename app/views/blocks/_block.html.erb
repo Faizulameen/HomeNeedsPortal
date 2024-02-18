@@ -1,0 +1,131 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+<h1>Booking Details</h1>
+
+<% if current_user && current_user.admin %>
+        <table class="table"> 
+
+ <thead class="thead-dark"> 
+   <tr>
+     <th>Fullname</th>
+     <th>Email</th>
+     <th>DOB</th>
+     <th>Address</th>
+      <th>City</th>
+     <th>State</th>
+     <th>Pin</th>
+      <th>Status</th>
+      <th>From</th>
+      <th>To</th>
+   </tr>
+ </thead>
+ <tr>
+
+<td><%= block.user.first_name %> <%= block.user.last_name %></td>
+<td><%= block.user.email %></td>
+<td><%= block.user.birthday %></td>
+<td><%= block.address %></td>
+<td><%= block.city %></td>
+<td><%= block.state %>
+</td>
+<td><%= block.pin %></td>
+<td><span class="badge badge-<%= block.badge_color %> mb-3"><%= block.status %></span>
+		<%= link_to "Edit", edit_worker_block_path(block.worker, block) %>
+<%= link_to "Delete", worker_block_path(block.worker, block),class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: "Are you sure?" } %></td>
+
+<td><%= block.from %></td>
+<td><%= block.to %></td>
+
+</tr>
+</table>
+
+<table class="table"> 
+
+ <thead class="thead-dark"> 
+   <tr>
+           <th>Worker Name</th>
+      <th>Worker Phone</th>
+      <th>Worker Id</th>
+      <th>User Id</th>
+    </tr>
+  </thead>
+  <tr>
+    <td><%= block.worker.name %></td>
+<td><%= block.worker.phone %></td>
+<td><%= block.worker_id %></td>
+<td><%= block.user_id %></td>
+</tr>
+</table>
+
+	<% end %>
+
+
+
+    <% if user_signed_in? %>
+    
+<% if block.user_id == current_user.id %>
+     <table class="table"> 
+
+ <thead class="thead-dark"> 
+   <tr>
+     <th>Fullname</th>
+     <th>Email</th>
+     <th>DOB</th>
+     <th>Address</th>
+      <th>City</th>
+     <th>State</th>
+     <th>Pin</th>
+      <th>Status</th>
+        <th>From</th>
+      <th>To</th>
+
+   </tr>
+ </thead>
+ <tr>
+<td><%= block.user.first_name %> <%= block.user.last_name %></td>
+	<%= link_to "Cancel Booking", worker_block_path(block.worker, block),class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>
+</td>
+<td><%= block.user.email %></td>
+<td><%= block.user.birthday %></td>
+<td><%= block.address %></td>
+<td><%= block.city %></td>
+<td><%= block.state %>
+</td>
+<td><%= block.pin %></td>
+<td><span class="badge badge-<%= block.badge_color %> mb-3"><%= block.status %></span>
+</td>
+<td><%= block.from %></td>
+<td><%= block.to %></td>
+
+
+
+
+
+	</tr>
+</table>
+ <table class="table"> 
+
+ <thead class="thead-dark"> 
+   <tr>
+           <th>Worker Name</th>
+      <th>Worker Phone</th>
+      <th>Worker Id</th>
+      <th>User Id</th>
+    </tr>
+  </thead>
+  <tr>
+    <td><%= block.worker.name %></td>
+<td><%= block.worker.phone %></td>
+<td><%= block.worker_id %></td>
+<td><%= block.user_id %></td>
+</tr>
+</table>
+
+	<% end %>
+
+<%end%>
+
+</div>
+</div>

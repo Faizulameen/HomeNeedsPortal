@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'></h2>
+
+
+<h1>Edit Review Booking</h1>
+<%= simple_form_for([@worker, @block]) do |f| %>
+	
+     <div class="field">
+    <%= f.label :status %>
+    <%= f.select :status, Block::STATUS_OPTIONS %>
+      </div>
+
+  <%= f.button :submit %>
+<% end %>
+</div>
+</div>

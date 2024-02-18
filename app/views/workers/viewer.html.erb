@@ -1,0 +1,12 @@
+ <% if user_signed_in? %>
+
+	<% if current_user.id == current_user.id %>
+
+ <% @workers.each do |worker| %>
+          
+          <%= render worker.blocks %>
+          
+
+ <% end %>
+ <% end %>
+ <% end %>
